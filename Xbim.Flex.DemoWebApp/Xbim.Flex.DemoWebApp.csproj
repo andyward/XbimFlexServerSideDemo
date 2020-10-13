@@ -176,7 +176,7 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xbim.Flex.Client, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xbim.Flex.Client.1.0.219\lib\net472\Xbim.Flex.Client.dll</HintPath>
+      <HintPath>..\packages\Xbim.Flex.Client.1.0.220\lib\net472\Xbim.Flex.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +204,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Config.cs" />
+    <Compile Include="Helpers\FlexApiExtensions.cs" />
+    <Compile Include="Helpers\OAuthHelper.cs" />
     <Compile Include="Models\InspectModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
