@@ -34,7 +34,7 @@ namespace Xbim.Flex.DemoWebApp.Helpers
         public static async Task<IEnumerable<Space>> GetSpacesAsync(this FlexAPI flexClient, string filter /*, Criteria */)
         {
             var tenant = await GetCurrentTenantAsync(flexClient);
-            var response = await flexClient.Spaces_GetAsync(tenant.Identifier, filter: filter, orderby: "Name", expand: "Components" /* filters, paging */ );
+            var response = await flexClient.Spaces_GetAsync(tenant.Identifier, filter: filter, orderby: "Name", expand: "Components,Attributes" /* filters, paging */ );
 
             return response.Value;
         }

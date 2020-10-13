@@ -22,6 +22,7 @@
             <th>Entity ID</th>
             <th>UUID</th>
             <th># Components</th>
+            <th>Properties</th>
             <th></th>
         </tr>
 
@@ -42,6 +43,42 @@
                 </td>
                 <td>
                     @space.Components.Count
+                </td>
+                <td>
+                    <table>
+                        @foreach (var attr in space.Attributes)
+                        {
+                        <tr>
+                            <th>@attr.Name</th>
+                            @{
+                                var dataType = (attr.Value.DataType &= ~(Xbim.Flex.Client.ValueContainerDataType.NotNull));
+                                switch (dataType)
+                                {
+                                    case Xbim.Flex.Client.ValueContainerDataType.Date:
+                                        <td>@attr.Value.Date</td>
+                                        break;
+
+                                    case Xbim.Flex.Client.ValueContainerDataType.Integer:
+                                        <td>@attr.Value.Integer</td>
+                                        break;
+
+                                    case Xbim.Flex.Client.ValueContainerDataType.Logical:
+                                        <td>@attr.Value.Logical</td>
+                                        break;
+
+                                    case Xbim.Flex.Client.ValueContainerDataType.Real:
+                                        <td>@attr.Value.Real</td>
+                                        break;
+
+                                    default:
+                                        <td>@attr.Value.Text</td>
+                                        break;
+                                }
+                            }
+                        </tr>
+                        }
+                    </table>
+
                 </td>
 
                 <td>
