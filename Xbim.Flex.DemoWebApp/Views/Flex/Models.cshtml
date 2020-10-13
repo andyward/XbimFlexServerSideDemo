@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Xbim.Flex.Client.Model>
+
+@{
+    ViewBag.Title = "Models";
+}
+
+<h2>Models</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Model Name</th>
+        <th>ID</th>
+        <th>Asset ID</th>
+        <th>Uploaded</th>
+        <th>Processing Stage</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @item.Name
+    </td>
+    <td>
+        @item.AssetModelId
+    </td>
+    <td>
+        @item.AssetId
+    </td>
+    <td>
+        @item.DateUploaded
+    </td>
+    <td>
+        @item.ProcessingStage
+    </td>
+    <td>
+        @if(item.ProcessingStage == "Process Ended")
+        {
+            @Html.ActionLink("View", "InspectModel", new { id = item.AssetModelId })
+        } else
+        {
+            <p>Not Ready</p>
+        }
+    </td>
+</tr>
+}
+
+</table>

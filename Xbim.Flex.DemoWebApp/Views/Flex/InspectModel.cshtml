@@ -1,0 +1,55 @@
+﻿@model Xbim.Flex.DemoWebApp.Models.InspectModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.FlexModel.AssetName - @Model.FlexModel.Name</h2>
+
+<div>Size: @Model.FlexModel.ModelSize bytes</div>
+
+<div>
+    <p>
+        @Html.ActionLink("Download Wexbim", "DownloadEnvelopeWexbim", "Flex", new { id = Model.FlexModel.AssetModelId }, new { @class = "btn btn-default" })
+    </p>
+</div>
+
+<div class="rooms">
+    <table class="table">
+        <tr>
+            <th>Room Name</th>
+            <th>Description</th>
+            <th>Entity ID</th>
+            <th>UUID</th>
+            <th># Components</th>
+            <th></th>
+        </tr>
+
+        @foreach (var space in Model.Spaces)
+        {
+            <tr>
+                <td>
+                    @space.Name
+                </td>
+                <td>
+                    @space.Description
+                </td>
+                <td>
+                    @space.EntityId
+                </td>
+                <td>
+                    @space.ExternalIdentifier
+                </td>
+                <td>
+                    @space.Components.Count
+                </td>
+
+                <td>
+                    @Html.ActionLink("View", "InspectRoom", new { id = space.EntityId })
+                </td>
+            </tr>
+        }
+    </table>
+
+
+</div>

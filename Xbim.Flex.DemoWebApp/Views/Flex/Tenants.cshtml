@@ -1,0 +1,23 @@
+﻿
+@model IEnumerable<Xbim.Flex.Client.Tenant>
+@{
+    ViewBag.Title = "Flex Context";
+}
+
+<h2>Token</h2>
+<div>Access Token</div>
+
+<div><pre>@ViewBag.AccessToken</pre></div>
+
+<h2>Tenants</h2>
+<br />
+    @if (Model.Any())
+    {
+        <div>
+            @Html.DropDownList("Tenants", Model.Select(m => new SelectListItem { Text = m.Name, Value = m.Identifier }), "Choose a Tenant")
+        </div>
+    }
+<br />
+<div>
+    <p>@Html.ActionLink("Create Tenant", "CreateTenant", "Flex", null, new { @class = "btn btn-default" })</p>
+</div>

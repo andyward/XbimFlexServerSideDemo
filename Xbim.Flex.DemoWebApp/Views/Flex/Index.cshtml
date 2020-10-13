@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Get a Flex access token</h2>
+            <p>
+                You need a token to access the Flex API. This demo uses the Client Credentials flow meaning that the token authorised the application
+                not the user.
+            </p>
+            <p>
+                @Html.ActionLink("Sign In", "Tenants", "Flex", null, new { @class = "btn btn-default" })
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>Create a Tenant</h2>
+            <p>A Tenant represents one of your customers, and ensures their data is segregated. </p>
+            <p>@Html.ActionLink("Create Tenant", "CreateTenant", "Flex", null, new { @class = "btn btn-default" })</p>
+        </div>
+        <div class="col-md-4">
+            <h2>Upload a model</h2>
+            <p>Upload a model to the tenant in Flex so that it can be processed for viewing. We won't create the file upload here - we assume its on your server already.</p>
+            <p>@Html.ActionLink("Upload Model", "UploadModel", "Flex", null, new { @class = "btn btn-default" })</p>
+        </div>
+        <div class="col-md-4">
+            <h2>List Models</h2>
+            <p>
+                See models that have been uploaded and processed
+            </p>
+            <p>
+                @Html.ActionLink("Models", "Models", "Flex", null, new { @class = "btn btn-default" })
+            </p>
+        </div>
+    </div>
