@@ -17,6 +17,16 @@ namespace Xbim.Flex.DemoWebApp.Helpers
             return response.Value;
         }
 
+        /// <summary>
+        /// Gets the current user
+        /// </summary>
+        /// <param name="flexClient"></param>
+        /// <returns></returns>
+        public static async Task<User> GetMeAsync(this FlexAPI flexClient)
+        {
+            return await flexClient.Me_GetAsync(expand: "Tenants");
+        }
+
         public static async Task<Model> GetModelByIdAsync(this FlexAPI flexClient, int modelId)
         {
             var tenant = await GetCurrentTenantAsync(flexClient);

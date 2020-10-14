@@ -29,8 +29,10 @@ namespace Xbim.Flex.DemoWebApp.Controllers
             var token = await GetAccessTokenAsync();
             var client = OAuthHelper.BuildApiClient(token);
             var tenants = await GetTenants(client);
+            var user = await client.GetMeAsync();
 
             ViewBag.AccessToken = token.AccessToken;
+            ViewBag.User = user;
 
             return View(tenants);
         }
@@ -142,7 +144,7 @@ namespace Xbim.Flex.DemoWebApp.Controllers
                 return tr;
             }
 
-            TokenResponse response = await OAuthHelper.GetAccessToken();
+            TokenResponse response = await OAuthHelper.GetClientAccessToken();
 
             // We're storing state on the session - you may have a better means of caching state
             Session["Token"] = response;

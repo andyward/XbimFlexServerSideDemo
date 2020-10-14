@@ -8,12 +8,15 @@ namespace Xbim.Flex.DemoWebApp.Helpers
 {
     public static class OAuthHelper
     {
-
-        public static async Task<TokenResponse> GetAccessToken()
+        /// <summary>
+        /// Gets an access token from the Flex ID Server
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<TokenResponse> GetClientAccessToken()
         {
             var client = new HttpClient();
 
-            // discover the OAuh2 endpoints.
+            // discover the OAuth2 endpoints.
             var disco = await client.GetDiscoveryDocumentAsync(Config.FlexIdServerAddress);
             if (disco.IsError) throw new Exception(disco.Error);
 
@@ -30,6 +33,11 @@ namespace Xbim.Flex.DemoWebApp.Helpers
             return response;
         }
 
+        /// <summary>
+        /// Builds a Flex API Client using the provided access token
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
         public static FlexAPI BuildApiClient(TokenResponse token)
         {
             var httpClient = new HttpClient();

@@ -9,6 +9,9 @@
 
 <div><pre>@ViewBag.AccessToken</pre></div>
 
+<div>Current User Name: @ViewBag.User.Name</div>
+<div>Current Email: @ViewBag.User.Email <em>(This is the email of owner of the application, not the user in the browser)</em></div>
+
 <h2>Tenants</h2>
 <br />
     @if (Model.Any())
